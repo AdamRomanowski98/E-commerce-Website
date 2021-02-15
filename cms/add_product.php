@@ -1,6 +1,6 @@
 <?php
     include ('../common.php');
-    outputHeader("CMS Login");  
+	outputHeader("CMS Login");  
 	outputBannerNavigation("Home");
 ?>      
 
@@ -48,7 +48,7 @@
 
 		<div class="form-group">
     		<label for="productImage">Image</label>
-    		<input type="text" class="form-control" id="productImage" name="image" placeholder="/jpg/product_image.jpg">
+    		<input type="text" class="form-control" id="productImage" name="image" placeholder="D:\www\jpg\product_image.jpg">
 		</div>
 	
 	 
@@ -97,5 +97,5 @@ function add_product(){
 
 
 <?php
-       outputFooter();
+        outputFooter();
 ?>

@@ -5,7 +5,7 @@
  ?>
 
  <script type="text/javascript" src="../js/checkout.js"></script>
- <body onload="loadOrderDetails(), checkLogin(), loadCustomer()">
+ <body onload="loadOrderDetails(), checkLogin()">
 
 
 <div class="checkout-cont">
@@ -25,12 +25,7 @@
                                 <input type="text" class="form-control" name="lastName" id="lastName1" placeholder="Last Name">
                             </div>
 
-                            <div class="col-6 form-group lead">
-                                <label for="emailInput">E-mail Address</label>
-                                <input type="email" class="form-control" name="email" id="email1" placeholder="E-mail" readonly>
-                            </div>
-
-                            <div class="col-6 form-group lead">
+                            <div class="col-12 form-group lead">
                                 <label for="phone">Phone Number</label>
                                 <input type="text" class="form-control" name="phone" id="phone1" placeholder="Phone Number">
                             </div>
@@ -64,14 +59,11 @@
                     </form>
                     
             </div>
+
         </div>
 
 
 </div>
-
-
-
-
 
 
 <script>
@@ -97,69 +89,6 @@
     }
 
     
-
-    function loadCustomer(){
-        //Create event handler that specifies what should happen when server responds
-        request.onload = function(){
-        //Check HTTP status code
-        if(request.status === 200){
-            //Add data from server to page
-            console.log('responseText - ' + request.responseText);
-            displayCustomer(request.responseText);
-        } 
-        else
-            alert("Error communicating with server: " + request.status);
-        };
-
-        //Set up request and send it
-        request.open("GET", "customer.php");
-        request.send();
-    }
-
-
-
-//Loads customer into page
-function displayCustomer(jsonCustomer){
-        //Convert JSON to array of product objects
-        let custArray = JSON.parse(jsonCustomer)
-
-        //Output customer data
-        document.getElementById("firstName1").value = custArray.firstName;
-        document.getElementById("lastName1").value = custArray.lastName;
-        document.getElementById("phone1").value = custArray.phone;
-        document.getElementById("email1").value = custArray.email;
-        document.getElementById("address1").value = custArray.address;
-        document.getElementById("city1").value = custArray.city;
-        document.getElementById("postCode1").value = custArray.postCode;
-        console.log(jsonCustomer);
-    }
-
-    function update_customer(){
-
-	request.onload = function(){
-		
-		if(request.status === 200){
-			let responseData = request.responseText;
-			alert(responseData);
-		}else
-			alert("Error communicating with server: " + request.status);
-	};
-	request.open("POST", "editCustomer.php");
-	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	
-    let NewEmail = document.getElementById("email1").value;
-	let NewName = document.getElementById("firstName1").value;
-	let NewSurname = document.getElementById("lastName1").value;
-	let NewPhone = document.getElementById("phone1").value;
-	let NewAddress = document.getElementById("address1").value;
-	let NewCity = document.getElementById("city1").value;
-	let NewPostCode = document.getElementById("postCode1").value;
-	
-	request.send("NewNam=" + NewName + "&NewEm="+ NewEmail + "&NewSur=" + NewSurname + "&NewPh=" + NewPhone + "&NewAdd=" + NewAddress + "&NewCit=" + NewCity + "&NewPost=" + NewPostCode);
-}
-
-
 </script>
 
  

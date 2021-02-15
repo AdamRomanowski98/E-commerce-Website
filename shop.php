@@ -39,8 +39,6 @@
 <script>
 
 
-	let totalPrice = 0;
-
 	function output_products(request){
 	document.getElementById("table").innerHTML="";
 	let product = JSON.parse(request.responseText);	
@@ -74,7 +72,10 @@
                         '</div>'+
                         '</div>'+
                         '</div>';			
+
+			
 		}
+
 }
 
     function load_prod(){

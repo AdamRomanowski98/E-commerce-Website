@@ -220,13 +220,13 @@ nav{
 
 .right-menu{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     width: 150px;
 }
 
 .right-menu a{
-    margin: 0px 10px;
+
     font-size: 1.2rem;
     color: black;
     text-decoration: none;
@@ -286,6 +286,7 @@ nav{
     justify-content: center;
     align-items: center;
     margin-top: 80px;
+    
 
 }
 
@@ -656,8 +657,10 @@ nav{
     padding: 10px;
     border-top: 1px solid rgba(0,0,0,0.1);
     margin-top: 20px;
-    height: 50px;
+    max-height: 50px;
 }
+
+
 
 .copyright{
     font-size: 15px;
