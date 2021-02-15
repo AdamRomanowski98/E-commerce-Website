@@ -19,7 +19,7 @@
 
 <script>
             //Global variables 
-            let loggedInStr = "<div class='log'>Logged in as </div><button class='logOutButton' onclick='logout()'>Logout</button><a href='viewDetails.php'>View details</a><a href='checkOrders.php'>View Orders</a>";
+            let loggedInStr = "<div class='log'>Logged in </div><button class='logOutButton' onclick='logout()'>Logout</button><a href='viewDetails.php'>View details</a><a href='checkOrders.php'>View Orders</a>";
             let loginStr = document.getElementById("LoginPara").innerHTML;
             let request = new XMLHttpRequest();
             
