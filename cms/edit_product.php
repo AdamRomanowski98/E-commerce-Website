@@ -83,6 +83,7 @@ function check_product(){
 	request.onload = function(){
 		if(request.status === 200){
 			var myObj = JSON.parse(this.responseText);
+			console.log(myObj);
 			
 			if (myObj[0] != 0){
 			alert("Product found and will be loaded on to page");
@@ -128,7 +129,7 @@ function change_product(){
 	var pc = document.getElementById("productCategory").value;
 	var pm = document.getElementById("productManufacturer").value;
 	var pi = document.getElementById("productImage").value;
-	_request.send("NewProduct=" + pt + "&NewPrice=" + pp + "&NewDescription=" + pd + "&NewCategory=" + pc + "&NewManufacturer" + pm + "&NewImage" + pi);	
+	_request.send("NewProduct=" + pt + "&NewPrice=" + pp + "&NewDescription=" + pd + "&NewCategory=" + pc + "&NewManufacturer=" + pm + "&NewImage=" + pi);	
 }
 </script>
 
