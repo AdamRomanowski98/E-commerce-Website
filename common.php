@@ -35,7 +35,7 @@ function outputBannerNavigation($pageName){
     echo '<ul class="menu">';
         //Array of pages to link to
         $linkNames = array("Home", "Shop", "About", "Contact", "Sign up");// this is the pageName of HTML file
-        $linkAddresses = array("index.php", "shop.php","about.php", "contact.php", 'myAccount.php'); // the link
+        $linkAddresses = array("../index.php", "../shop.php","../about.php", "../contact.php", '../myAccount.php'); // the link
         //Output navigation
         for($x = 0; $x < count($linkNames); $x++){ // goes through the links to find matching pageName
     echo '<li><a ';      // print the anchor
@@ -64,7 +64,7 @@ function outputFooter(){
             Copyright 2021 - MiddlesexElectronics 
         </span>
         <div class="cms">
-        <a href="cms/cms.php">cms</a>
+        <a href="../cms/cms.php">cms</a>
         </div> 
     </div>
     </body>
@@ -79,7 +79,7 @@ function outputFooterCMS(){
                 <a href="..\shop.php">Shop</a>
                 <a href="..\about.php">Contact</a>
                 <a href="..\contact.php">Login</a>
-                <a href="cms.php">CMS</a>
+                <a href="..\cms.php">CMS</a>
             </div>
           </body>
         </html>

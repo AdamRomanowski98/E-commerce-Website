@@ -55,10 +55,10 @@
                         //Add data to page
                         if(responseData === "ok"){
                             document.getElementById("LoginPara").innerHTML = loggedInStr;
-                            document.getElementById("ErrorMessages").innerHTML = "";//Clear error messages
+                        
                         }
                         else
-                            document.getElementById("ErrorMessages").innerHTML = request.responseText;
+                            alert("Incorrect details. Try again");
                     }
                     else
                         document.getElementById("ErrorMessages").innerHTML = "Error communicating with server";

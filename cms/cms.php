@@ -94,5 +94,5 @@
 
 
 <?php
-        outputFooterCMS();
+        outputFooter();
 ?>

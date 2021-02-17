@@ -14,7 +14,7 @@ let request = new XMLHttpRequest();
 console.log('request: ' + request);
 window.onload = loadOrder;
 
-
+//load orders
 function loadOrder(){
     request.onload = function(){
         if(request.status === 200){
@@ -29,13 +29,14 @@ function loadOrder(){
         request.send();
 }
 
+//display orders in the table
 function displayOrders(jsonOrder){
     document.getElementById("table").innerHTML="";
     let orderArray = JSON.parse(jsonOrder)
     let t = document.getElementById("table");
     let newRow = t.insertRow(t.length);// create a new row
 
-
+    //Create cells
             var cell = newRow.insertCell(0);
                 cell.innerHTML = "First Name";
 
@@ -48,7 +49,7 @@ function displayOrders(jsonOrder){
             var cell = newRow.insertCell(3);
                 cell.innerHTML = "Total";
 
-
+    //display orders
     for (let i = 0 ; i < orderArray.length; i++){
         newRow = t.insertRow(t.length);// create a new row
 

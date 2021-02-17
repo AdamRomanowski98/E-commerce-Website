@@ -22,7 +22,7 @@
 <script>
 
 window.onload = show_products;
-
+//Function to display products
 function show_products(){
     let Table = document.getElementById("table");
     Table.innerHTML="";
@@ -51,7 +51,7 @@ function show_products(){
             var cell = newRow.insertCell(5);
                 cell.innerHTML = "Image";
 
-
+//display products
             for (let i = 0; i < productsArray.length; i++){
                 newRow = table.insertRow(table.length);
 

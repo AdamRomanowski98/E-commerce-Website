@@ -21,8 +21,11 @@
     $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
     $basket = filter_input(INPUT_POST, 'basket', FILTER_SANITIZE_STRING);
 
+    //Check if all details provided 
     if($name != "" && $surname != "" && $phone != "" && $address != "" && $city != "" && $postCode != ""){
 
+
+    //check what customer is logged in 
     session_start();
 
     if(array_key_exists("loggedInUserEmail", $_SESSION)){
@@ -33,11 +36,14 @@
         ];
     }
 
+    
     $customerArray = $db->Customers->find($findCriteria)->toArray();
 
     $customer = $customerArray[0];
     $custID = $customer['_id'];
 
+
+    //Add new order for logged in customer
     $productArray = [
         
         "custID" => $custID,
@@ -57,7 +63,7 @@
     $checkValue = $collection -> insertOne($productArray);
 	
     if($insertResult->getInsertedCount()==1){
-        echo 'Welcome ' . $name . ', your account has been created';
+        echo 'Order has been proceeded';
     }
     else {
         echo 'Error while proceeding your order';

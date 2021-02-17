@@ -20,11 +20,12 @@
     
 
 
-
+    //look for an e-mail
     $findCriteria = [
         "email" => $NewEmail, 
      ];
 
+     //update customer details
      $updateCriteria = [
         '$set' => [ "firstName" => $NewName, 
                     "lastName" => $NewSurname, 
@@ -38,6 +39,7 @@
     //Find all of the customers that match  this criteria
     $returnVal = $db->Customers->updateOne($findCriteria, $updateCriteria);
 
+    //if modified display message 
     if($returnVal->getModifiedCount()){
         echo 'Customer details has been changed.';
     }

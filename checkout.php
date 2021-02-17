@@ -53,16 +53,10 @@
                             <div class="col-12 text-right registerBtn">
                                 <button type="submit" onclick="completeOrder()" class="btn btn-info btn-lg">Save</button>
                             </div>
-
-
                         </div>
-                    </form>
-                    
+                    </form>              
             </div>
-
         </div>
-
-
 </div>
 
 

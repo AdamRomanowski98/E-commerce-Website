@@ -10,7 +10,7 @@ $db = $mongoClient->ecommerce;
 
 $prdid = filter_input(INPUT_GET, 'prdid', FILTER_SANITIZE_STRING);
 
-
+//Search for project id
 $searchCriteria = [
     "_id" => new MongoDB\BSON\ObjectID($prdid)
 ];

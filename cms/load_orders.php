@@ -20,3 +20,4 @@ $collection = $db -> Orders;
         $jsonStr .= ']';
 
 echo $jsonStr;
+?>

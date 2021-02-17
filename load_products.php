@@ -3,14 +3,14 @@
     $condition = filter_input(INPUT_POST, '_condition', FILTER_SANITIZE_STRING);
     $search = filter_input(INPUT_POST, '_search', FILTER_SANITIZE_STRING);
     
-	
+	//connect to database 
     require __DIR__ . '/vendor/autoload.php';
     $mongoClient = (new MongoDB\Client);
     $db = $mongoClient->ecommerce;
 
 	$collection = $db -> Products;	
     
-
+    //display products
     if ($condition == 0){
 
     $product = $db->Products->find();
@@ -29,6 +29,7 @@
 
     }
 
+    //display Price ascending 
     if ($condition == 1){
 
         $product = $db->Products->find(
@@ -51,6 +52,7 @@
         echo $jsonStr;
     }
 
+    //display Price descending 
     if ($condition == -1){
 
         $product = $db->Products->find(
@@ -73,6 +75,8 @@
         echo $jsonStr;
     }
 
+
+    //display product name ascending 
     if ($condition == 2){
 
         $product = $db->Products->find(
@@ -97,6 +101,7 @@
 
     }
 
+    //display product name descending 
     if ($condition == -2){
 
         $product = $db->Products->find(
@@ -120,7 +125,7 @@
     }
 
 
-
+    //Index search for searching 
     if ($condition == 3){
 
         $collection->createIndex(array('Description' => 'text'));
