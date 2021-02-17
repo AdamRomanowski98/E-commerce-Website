@@ -16,23 +16,24 @@
 <!----------------------------------------------------------------------------------->
 
 
-<div class="registerContainer">
-    <div>
-        <div class="form-group">
-            <label for = "title">Enter name of product to edit:</label>
-            <input type="text" class="form-control" id="productTitle">
-        </div>
+	<div class="checkItem">
+			<div class="form-group">
+				<label for = "title">Enter name of product to edit:</label>
+				<input type="text" class="form-control" id="productTitle">
+			</div>
 
-        <div class = "input-group">
-            <button onclick = "check_product()" class="item_add btn btn-primary col-md-12">Check if product exist</button>
+			<div class = "input-group">
+				<button onclick = "check_product()" class="checkItemBtn">Check if product exist</button>
+			</div>
+	</div>
 <!------------------------------------------------------------->
 <div class="cms-product-cont">
 	<h1 class="addProductsh1">Edit product</h1>
 	<form class="productCont">
-	
+
 		<div class="form-group">
     		<label for="productTitle">Title</label>
-    		<input type="text" class="form-control" id="productTitle" name="title" placeholder="Product title">
+    		<input type="text" class="form-control" id="newProductTitle" name="title" placeholder="Product title" readonly>
 		</div>
 	
 	
@@ -60,13 +61,15 @@
 
 		<div class="form-group">
     		<label for="productImage">Image</label>
-    		<input type="text" class="form-control" id="productImage" name="image" placeholder="D:\www\jpg\product_image.jpg">
+    		<input type="text" class="form-control" id="productImage" name="image" placeholder="/jpg/product_image.jpg">
 		</div>
 	
 	 
 	<div class="input-group">
-		<button onclick="change_product()"  class="item_add btn btn-primary col-md-12">Add product</button>
+		<button onclick="change_product()"  class="item_add btn btn-primary col-md-12">Edit product</button>
 	</div>
+
+</div>
 
 
 
@@ -74,6 +77,39 @@
 
 <script>
 
+//function which finds products by Title and displays them
+function check_product(){
+	var request = new XMLHttpRequest();
+	request.onload = function(){
+		if(request.status === 200){
+			var myObj = JSON.parse(this.responseText);
+			
+			if (myObj[0] != 0){
+			alert("Product found and will be loaded on to page");
+			document.getElementById("newProductTitle").value=myObj[0];
+			document.getElementById("productPrice").value=myObj[1];
+			document.getElementById("productDescription").value=myObj[2];
+			document.getElementById("productCategory").value=myObj[3];
+			document.getElementById("productManufacturer").value=myObj[4];
+			document.getElementById("productImage").value=myObj[5];
+			
+			}else{
+				alert("Please enter product name!");
+			}
+		}
+		else
+			alert("Error communicating with server: " + request.status);
+	};
+	
+	request.open("POST", "check_product.php");
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	var ti = document.getElementById("productTitle").value;
+	request.send("_title=" + ti);
+}	
+
+
+//function which allows customer to change product details
 function change_product(){
 	var _request = new XMLHttpRequest();
 	_request.onload = function(){
@@ -86,11 +122,13 @@ function change_product(){
 	_request.open("POST", "update_product.php");
 	_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
-	var pr = document.getElementById("NewproductTytule").value;
-	var qt = document.getElementById("units").value;
-	var prc = document.getElementById("price").value;
-	var ph = document.getElementById("path").value;
-	_request.send("NewProduct=" + pr + "&NewUnits=" + qt + "&NewPrice=" + prc + "&NewPath=" + ph);	
+	var pt = document.getElementById("newProductTitle").value;
+	var pp = document.getElementById("productPrice").value;
+	var pd = document.getElementById("productDescription").value;
+	var pc = document.getElementById("productCategory").value;
+	var pm = document.getElementById("productManufacturer").value;
+	var pi = document.getElementById("productImage").value;
+	_request.send("NewProduct=" + pt + "&NewPrice=" + pp + "&NewDescription=" + pd + "&NewCategory=" + pc + "&NewManufacturer" + pm + "&NewImage" + pi);	
 }
 </script>
 

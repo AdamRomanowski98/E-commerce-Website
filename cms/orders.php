@@ -9,7 +9,7 @@
     <ul>
 		<li><a href="add_product.php">Add product</a></li>
         <li><a href="edit_product.php">Edit product</a></li>
-		<li><a href="view_orders.php">View orders</a></li>
+		<li><a href="view_products.php">View products</a></li>
 		<li><a href="orders.php">Placed orders</a></li> 
     </ul>        
 </div>
@@ -23,6 +23,7 @@
 <script>
 window.onload =view_orders;
 
+//Function to display orders
 function view_orders(){
     document.getElementById("orderContainer").innerHTML ="";
     let _request = new XMLHttpRequest();
@@ -59,7 +60,9 @@ function view_orders(){
             var cell = newRow.insertCell(6);
                 cell.innerHTML = "Order id";
 
+            var cell = newRow.insertCell(7);
 
+//display orders
             for (let i = 0; i < ordersArray.length; i++){
                 newRow = table.insertRow(table.length);
                 let orderId = ordersArray[i]._id.$oid;
@@ -85,6 +88,10 @@ function view_orders(){
                 cell = newRow.insertCell(6);
                 cell.innerHTML = orderId;
 
+                cell = newRow.insertCell(7);
+                cell.innerHTML = '<button id="bt" onclick= \'DeleteOrder("'+orderId+'")\'>Delete</button>'
+
+
 
             
             }
@@ -96,6 +103,23 @@ function view_orders(){
     _request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     _request.send();
 }
+
+//function to delete order with passed id
+function DeleteOrder(deleteThis){
+    let _request = new XMLHttpRequest();
+    _request.onload= function(){
+        if(_request.status === 200){
+            let responseData = _request.responseText;
+			alert(responseData);
+            console.log(deleteThis);
+        }else
+            alert("Server error:" + _request.status);
+
+}
+            _request.open("POST", "delete_order.php");
+            _request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            _request.send("toBeDeleted="+deleteThis);
+            }
 </script>
 <?php
         outputFooter();

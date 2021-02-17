@@ -118,6 +118,8 @@ function displayCustomer(jsonCustomer){
         console.log(jsonCustomer);
     }
 
+
+    //edit details 
     function update_customer(){
 
 	request.onload = function(){

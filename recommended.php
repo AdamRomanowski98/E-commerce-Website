@@ -7,26 +7,25 @@
   //Select database
   $db = $mongoClient->ecommerce;
   //Select a collection 
-  $collection = $db->Orders;
+  $collection = $db->Products;
 
-  //Start session management
-  session_start();
 
-  //Extract logged in user data
-  $usrEmail = $_SESSION["loggedInUserEmail"];
+  $topKeyWord = filter_input(INPUT_POST, 'topKey', FILTER_SANITIZE_STRING);
 
-  //Create a PHP array with the search criteria
+
+  $collection->createIndex(array('Description' => 'text'));
+
+
   $findCriteria = [
-  "email" => $usrEmail, 
-  ];
+    '$text' => [ '$search' => $topKeyWord]
+];
 
-  $cursor = $db->Orders->find($findCriteria)->toArray();
+$cursor = $db->Products->find($findCriteria);
 
-  //load orders
   $jsonStr = '[';
 
-        foreach ($cursor as $orders){
-            $jsonStr .= json_encode($orders);
+        foreach ($cursor as $products){
+            $jsonStr .= json_encode($products);
             $jsonStr .= ',';
         }
 
@@ -34,6 +33,5 @@
         $jsonStr .= ']';
 
         echo $jsonStr;
-
 
 ?>

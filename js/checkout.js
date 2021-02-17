@@ -1,3 +1,4 @@
+//Loads number of products and total price
 function loadOrderDetails(){
     try{
         let basket = JSON.parse(sessionStorage.basket);
@@ -14,7 +15,7 @@ function loadOrderDetails(){
     }
 }
 
-
+//completes order
 function completeOrder(){
 
     let date = new Date();

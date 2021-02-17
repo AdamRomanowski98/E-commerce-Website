@@ -48,7 +48,7 @@
 
 		<div class="form-group">
     		<label for="productImage">Image</label>
-    		<input type="text" class="form-control" id="productImage" name="image" placeholder="D:\www\jpg\product_image.jpg">
+    		<input type="text" class="form-control" id="productImage" name="image" placeholder="/jpg/product_image.jpg">
 		</div>
 	
 	 

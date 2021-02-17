@@ -22,7 +22,7 @@
     $city = filter_input(INPUT_POST, '_city', FILTER_SANITIZE_STRING);
     $postCode = filter_input(INPUT_POST, '_postCode', FILTER_SANITIZE_STRING);	
 
-
+    //check if all details provided 
     if($name != "" && $surname != "" && $email != "" && $phone != "" && $password != "" && $address != "" && $city != "" && $postCode != ""){
 
     $findCriteria = [
@@ -33,7 +33,7 @@
 
 
 
-    //Checks if e-mail arleady exists
+    //Check if e-mail arleady exists
     if(!empty($cursor)){
         echo 'E-mail taken';
     }
