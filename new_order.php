@@ -70,7 +70,7 @@
     }
 
     }else{
-        echo 'alert("Please enter all details")';
+        echo 'Please enter all details';
     }
 
 

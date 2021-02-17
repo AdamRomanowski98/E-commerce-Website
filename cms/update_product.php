@@ -31,8 +31,15 @@
         
     
     
-        $checkValue = $collection -> updateOne($findCriteria,$updateProduct);	
+        $checkValue = $collection -> updateOne($findCriteria,$updateProduct);
+        
+        
+        if($checkValue->getModifiedCount()==1){
 		echo 'Updated!';
+        }
+        else{
+        echo 'Something went wrong';
+        }
                
 ?>	
 	
